@@ -199,17 +199,19 @@ $(".card .list-group").sortable({
   scroll: false,
   tolerance: "pointer",
   helper: "clone",
-  activate: function(event) {
-    console.log("activate", this);
+  activate: function(event, ui) {
+    $(this).addClass("dropover")
+    $(".bottomTrash").addClass("bottom-trash-drag");
   },
-  deactivate: function(event) {
-    console.log("deactivate", this);
+  deactivate: function(event, ui) {
+    $(this).removeClass("dropover")
+    $(".bottomTrash").removeClass("bottom-trash-drag");
   },
   over: function(event) {
-    console.log("over", event.target);
+    $(event.target).addClass("dropover-active");
   },
-  out: function(event) {
-    console.log("out", event.target);
+  out: function(event) { 
+    $(event.target).removeClass("dropover-active");
   },
  
   update: function(event) 
